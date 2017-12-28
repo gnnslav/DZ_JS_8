@@ -10,9 +10,8 @@ const apiKey = 'f24a0fd18f52218851075901c5a108a0';
 const apiUrl = `${api}${apiRes}?api_key=${apiKey}`;
 const urlImg = `https://image.tmdb.org/t/p/w500/`;
 
-
 const fetchPoster = (search) => {
-	return fetch(apiUrl + `&query=${search}`)
+	return fetch(`${apiUrl}&query=${search}`)
 	.then(response =>{
 		console.log(response);
 		if(response.ok){
@@ -40,18 +39,14 @@ const renderGallery = (results, parent) =>{
 	content.innerHTML = poster;
 }	
 
-//const form = document.querySelector('.search');
 const input = document.querySelector('#input');
 const submit = document.querySelector('#submit');
-
 submit.addEventListener('click', (event) => {
-
 	event.preventDefault();
-
 	const posters = fetchPoster(input.value);
 	posters.then(data =>{
-	renderGallery(data.results, content);
-	console.log((data));
+		renderGallery(data.results, content);
+		console.log((data));
 	});
 });
 
@@ -113,8 +108,8 @@ const popular = document.querySelector('#popular');
 popular.addEventListener('click', ()=> {
 	const postersPop = fetchPop();
 	postersPop.then(data =>{
-	renderGalleryBtn(data.results, content);
-	console.log((data));
+		renderGalleryBtn(data.results, content);
+		console.log((data));
 	});
 });
 
@@ -122,8 +117,8 @@ const topRated = document.querySelector('#top');
 topRated.addEventListener('click', ()=> {
 	const postersTop = fetchTop();
 	postersTop.then(data =>{
-	renderGalleryBtn(data.results, content);
-	console.log((data));
+		renderGalleryBtn(data.results, content);
+		console.log((data));
 	});
 });
 
@@ -131,8 +126,8 @@ const upcoming = document.querySelector('#latest');
 upcoming.addEventListener('click', ()=> {
 	const postersUp = fetchUp();
 	postersUp.then(data =>{
-	renderGalleryBtn(data.results, content);
-	console.log((data));
+		renderGalleryBtn(data.results, content);
+		console.log((data));
 	});
 });
 
